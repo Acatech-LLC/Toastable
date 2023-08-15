@@ -1,0 +1,37 @@
+{
+    "name": "acatech/toastable",
+    "description": "Toast notifications for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Acatech",
+            "email": "hello@actech.site"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "~7.0|~8.0|~9.0|~10.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Acatech\\Toastable": "src/"
+        },
+        "files": [
+            "src/Acatech/Toastable/functions.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Acatech\\Toastable\\ToastableServiceProvider"
+            ],
+            "aliases": {
+                "Toastable": "Acatech\\Toastable\\Toastable"
+            }
+        }
+    }
+}
