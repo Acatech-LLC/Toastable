@@ -1,27 +1,23 @@
-# Easy Flash Messages
+# Laravel Toastable Notifications Package
 
-![Example of Error Notification](https://i.imgur.com/6UnNsnp.png)
 
 # Copyright
 Inspired by [Jeffrey Way's Flash Package](https://github.com/laracasts/flash). Added following Jeffrey Ωmega's request.
 
 ## Installation
 
-### Video Tutorial
-
-[Watch a Video Tutorial here](https://www.youtube.com/watch?v=GXMLd7F9o94)
 
 ### You like text ?
 
 First, pull in the package through Composer.
 
-Run `composer require mercuryseries/flashy`
+Run `composer require acatech/toastable`
 
 And then, if using Laravel 5, include the service provider within `config/app.php`.
 
 ```php
 'providers' => [
-    MercurySeries\Flashy\FlashyServiceProvider::class,
+    Acatech\Toastable\ToastableServiceProvider::class,
 ];
 ```
 
@@ -29,7 +25,7 @@ And, for convenience, add a facade alias to this same file at the bottom:
 
 ```php
 'aliases' => [
-    'Flashy' => MercurySeries\Flashy\Flashy::class,
+    'Toastable' => Acatech\Toastable\Toastable::class,
 ];
 ```
 
@@ -40,7 +36,7 @@ Within your controllers, before you perform a redirect...
 ```php
 public function store()
 {
-    Flashy::message('Welcome Aboard!', 'http://your-awesome-link.com');
+    Toastable::message('Welcome Aboard!', 'http://your-awesome-link.com');
 
     return Redirect::home();
 }
