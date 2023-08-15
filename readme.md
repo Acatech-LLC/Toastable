@@ -36,7 +36,7 @@ Within your controllers, before you perform a redirect...
 ```php
 public function store()
 {
-    Toastable::message('Welcome Aboard!', 'http://your-awesome-link.com');
+    Toastable::message('hello guys', 'http://your-awesome-link.com');
 
     return Redirect::home();
 }
@@ -44,22 +44,22 @@ public function store()
 
 You may also do:
 
-- `Flashy::info('Message', 'http://your-awesome-link.com')`
-- `Flashy::success('Message', 'http://your-awesome-link.com')`
-- `Flashy::error('Message', 'http://your-awesome-link.com')`
-- `Flashy::warning('Message', 'http://your-awesome-link.com')`
-- `Flashy::primary('Message', 'http://your-awesome-link.com')`
-- `Flashy::primaryDark('Message', 'http://your-awesome-link.com')`
-- `Flashy::muted('Message', 'http://your-awesome-link.com')`
-- `Flashy::mutedDark('Message', 'http://your-awesome-link.com')`
+- `Toastable::info('Message', 'http://your-awesome-link.com')`
+- `Toastable::success('Message', 'http://your-awesome-link.com')`
+- `Toastable::error('Message', 'http://your-awesome-link.com')`
+- `Toastable::warning('Message', 'http://your-awesome-link.com')`
+- `Toastable::primary('Message', 'http://your-awesome-link.com')`
+- `Toastable::primaryDark('Message', 'http://your-awesome-link.com')`
+- `Toastable::muted('Message', 'http://your-awesome-link.com')`
+- `Toastable::mutedDark('Message', 'http://your-awesome-link.com')`
 
 Again, if using Laravel, this will set a few keys in the session:
 
-- 'flashy_notification.message' - The message you're flashing
-- 'flashy_notification.type' - A string that represents the type of notification (good for applying HTML class names)
-- 'flashy_notification.link' - The URL to redirect to on click
+- 'toastable_notification.message' - The message you're flashing
+- 'toastable_notification.type' - A string that represents the type of notification (good for applying HTML class names)
+- 'toastable_notification.link' - The URL to redirect to on click
 
-Alternatively, again, if you're using Laravel, you may reference the `flashy()` helper function, instead of the facade. Here's an example:
+Alternatively, again, if you're using Laravel, you may reference the `toastable()` helper function, instead of the facade. Here's an example:
 
 ```php
 /**
@@ -71,27 +71,27 @@ public function destroy()
 {
     Auth::logout();
 
-    flashy()->success('You have been logged out.', 'http://your-awesome-link.com');
+    toastable()->success('You have been logged out.', 'http://your-awesome-link.com');
 
     return home();
 }
 ```
 
-Or, for a general information flash, just do: `flashy('Some message', 'http://your-awesome-link.com');`.
+Or, for a general information flash, just do: `toastable('Some message', 'http://your-awesome-link.com');`.
 
 With this message flashed to the session, you may now display it in your view(s). Maybe something like:
 
 ```html
-@if(Session::has('flashy_notification.message'))
-<script id="flashy-template" type="text/template">
-    <div class="flashy flashy--{{ Session::get('flashy_notification.type') }}">
+@if(Session::has('toastable_notification.message'))
+<script id="toastable-template" type="text/template">
+    <div class="toastable toastable--{{ Session::get('toastable_notification.type') }}">
         <i class="material-icons">speaker_notes</i>
-        <a href="#" class="flashy__body" target="_blank"></a>
+        <a href="#" class="toastable__body" target="_blank"></a>
     </div>
 </script>
 
 <script>
-    flashy("{{ Session::get('flashy_notification.message') }}", "{{ Session::get('flashy_notification.link') }}");
+    toastable("{{ Session::get('toastable_notification.message') }}", "{{ Session::get('toastable_notification.link') }}");
 </script>
 @endif
 ```
@@ -99,10 +99,10 @@ With this message flashed to the session, you may now display it in your view(s)
 Because flash messages are so common, if you want, you may use (or modify) the views that are included with this package. Simply append to your layout view:
 
 ```html
-@include('flashy::message')
+@include('toastable::message')
 ```
 
-> Note that this package has jQuery has dependency. It's also better to load flashy before your body close tag.
+> Note that this package has jQuery has dependency. It's also better to load toastable before your body close tag.
 
 ## Example
 
@@ -121,7 +121,7 @@ Because flash messages are so common, if you want, you may use (or modify) the v
 </div>
 
 <script src="//code.jquery.com/jquery.js"></script>
-@include('flashy::message')
+@include('toastable::message')
 </body>
 </html>
 ```
@@ -132,16 +132,16 @@ If you need to modify the flash message partials, you can run:
 php artisan vendor:publish
 ```
 
-The two package views will now be located in the `app/views/packages/mercuryseries/flashy/` directory.
+The two package views will now be located in the `app/views/packages/acatech/toastable/` directory.
 
 ```php
-Flashy::message('Welcome aboard!', 'http://your-awesome-link.com');
+Toastable::message('Welcome aboard!', 'http://your-awesome-link.com');
 
 return Redirect::home();
 ```
 
 ```php
-Flashy::error('Sorry! Please try again.', 'http://your-awesome-link.com');
+Toastable::error('Sorry! Please try again.', 'http://your-awesome-link.com');
 
 return Redirect::home();
 ```
@@ -155,11 +155,11 @@ For a nice rendering you may include these lines in your head:
 <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
 ```
 
-and override the following sections of the default flashy view:
+and override the following sections of the default toastable view:
 
 ```html
 <style type="text/css">
-.flashy {
+.toastable {
     font-family: "Source Sans Pro", Arial, sans-serif;
     padding: 11px 30px;
     border-radius: 4px;
@@ -172,10 +172,10 @@ and override the following sections of the default flashy view:
 }
 </style>
 
-<script id="flashy-template" type="text/template">
-    <div class="flashy flashy--{{ Session::get('flashy_notification.type') }}">
+<script id="toastable-template" type="text/template">
+    <div class="toastable toastable--{{ Session::get('toastable_notification.type') }}">
         <i class="material-icons">speaker_notes</i>
-        <a href="#" class="flashy__body" target="_blank"></a>
+        <a href="#" class="toastable__body" target="_blank"></a>
     </div>
 </script>
 ```
