@@ -1,6 +1,6 @@
 <?php
 
-use Acatech\Acatech\ToastableNotifier;
+use Acatech\Toastable\ToastableNotifier;
 use Mockery as m;
 
 class ToastableTest extends PHPUnit_Framework_TestCase
@@ -11,7 +11,7 @@ class ToastableTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->session = m::mock('Toastable\Toastable\SessionStore');
+        $this->session = m::mock('Acatech\Toastable\SessionStore');
         $this->toast = new ToastableNotifier($this->session);
     }
 

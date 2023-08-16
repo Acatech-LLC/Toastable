@@ -1,6 +1,6 @@
 <?php
 
-namespace MercurySeries\Toastable;
+namespace Acatech\Toastable;
 
 class ToastableNotifier
 {
