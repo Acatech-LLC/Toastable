@@ -33,5 +33,6 @@
                 "Toastable": "Acatech\\Toastable\\Toastable"
             }
         }
-    }
+    },
+    "prefer-stable": true
 }
