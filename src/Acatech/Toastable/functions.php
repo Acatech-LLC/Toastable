@@ -6,7 +6,7 @@ if (! function_exists('toastable')) {
      * Arrange for a flash message.
      *
      * @param  string|null $message
-     * @return \Acatech\Toastable\ToastNotifier
+     * @return \Acatech\Toastable\ToastableNotifier
      */
     function toastable($message = null, $link = '#')
     {
